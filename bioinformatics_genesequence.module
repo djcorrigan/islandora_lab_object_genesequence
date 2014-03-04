@@ -5,20 +5,32 @@
   */
 function islandora_bioinformatics_genesequence_islandora_required_objects(IslandoraTuque $connection) {
   $module_path = drupal_get_path('module', 'islandora_bioinformatics_genesequence');
-  $genesequence_cm = $connection->repository->constructObject('islandora:genesequence');
-  $genesequence_cm->owner = 'fedoraAdmin';
-  $genesequence_cm->label = 'Bioinformatics Genesequence Content Model';
-  $genesequence_cm->models = 'fedora-system:ContentModel-3.0';
+  $genesequence_cmodel = $connection->repository->constructObject('islandora:genesequence_cmodel');
+  $genesequence_cmodel->owner = 'fedoraAdmin';
+  $genesequence_cmodel->label = 'Bioinformatics Genesequence Content Model';
+  $genesequence_cmodel->models = 'fedora-system:ContentModel-3.0';
   // DS-COMPOSITE-MODEL Datastream.
-  $datastream = $genesequence_cm->constructDatastream('DS-COMPOSITE-MODEL', 'X');
+  $datastream = $genesequence_cmodel->constructDatastream('DS-COMPOSITE-MODEL', 'X');
   $datastream->mimetype = 'text/xml';
   $datastream->setContentFromFile("$module_path/xml/genesequence_ds_composite_model.xml", FALSE);
-  $genesequence_cm->ingestDatastream($datastream);
+  $genesequence_cmodel->ingestDatastream($datastream);
+  // Genesequence Collection
+  $genesequence_collection = $connection->repository->constructObject('islandora:genesequence_collection');
+  $genesequence_collection->owner = 'fedoraAdmin';
+  $genesequence_collection->label = 'Genesequence Collection';
+  $genesequence_collection->models = 'islandora:collectionCModel';
+  $genesequence_collection->relationships->add(FEDORA_RELS_EXT_URI, 'isMemberOfCollection', 'islandora:root');
+  $datastream = $project_collection->constructDatastream('COLLECTION_POLICY', 'X');
+  $datastream->mimetype = 'text/xml';
+  $datastream->setContentFromFile("$module_path/xml/islandora_bioinformatics_genesequence_collection_policy.xml", FALSE);
+  $project_collection->ingestDatastream($datastream);
+  
   return array(
     'islandora_bioinformatics_genesequence' => array(
       'title' => 'Bioinformatics Genesequence',
       'objects' => array(
-          $genesequence_cm,
+          $genesequence_cmodel,
+          $genesequence_collection,
       ),
     ),
   );
