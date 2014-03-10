@@ -4,7 +4,6 @@
   <dsTypeModel ID="RELS-INT" optional="true"> <form FORMAT_URI="info:fedora/fedora-system:FedoraRELSInt-1.0" MIME="application/rdf+xml" /> </dsTypeModel>
   <dsTypeModel ID="MODS"> <!-- This datastream holds the descriptive metadata --> <form MIME="text/xml" /> </dsTypeModel>
   <dsTypeModel ID="EML"> <form MIME="text/xml"/> </dsTypeModel>
-  <dsTypeModel ID="POLICY"> <form MIME="text/xml"/> </dsTypeModel>
   <dsTypeModel ID="ABI" optional="true"> <form MIME="application/abi"/> </dsTypeModel>
   <dsTypeModel ID="FASTA" optional="true"> <form MIME="application/fasta"/> </dsTypeModel>
 </dsCompositeModel>
