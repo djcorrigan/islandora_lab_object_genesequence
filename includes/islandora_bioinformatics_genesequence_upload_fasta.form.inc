@@ -39,6 +39,6 @@ function islandora_bioinformatics_genesequence_upload_fasta_form_submit(array $f
   $fasta_file = file_load($form_state['values']['fasta_file']);
   $fasta_path = drupal_realpath($fasta_file->uri);
   $ds->setContentFromFile($fasta_path, FALSE);
-  $ds->label = $fasta_file->filename;
+  $ds->label = "FASTA File";
   $ds->mimetype = "application/fasta";
 }
