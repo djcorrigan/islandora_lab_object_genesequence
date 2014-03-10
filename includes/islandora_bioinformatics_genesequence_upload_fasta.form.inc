@@ -12,7 +12,7 @@ function islandora_bioinformatics_genesequence_upload_fasta_form(array $form, ar
   $extensions = array('fasta', 'fas', 'fna', 'ffn', 'faa', 'frn');
   $form = array();
 
-  $form['file'] = array(
+  $form['fasta_file'] = array(
     '#title' => t('FASTA File'),
     '#type' => 'managed_file',
     '#required' => FALSE,
