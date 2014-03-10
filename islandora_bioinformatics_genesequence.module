@@ -12,7 +12,12 @@ function islandora_bioinformatics_genesequence_islandora_required_objects(Island
   // DS-COMPOSITE-MODEL Datastream.
   $datastream = $genesequence_cmodel->constructDatastream('DS-COMPOSITE-MODEL', 'X');
   $datastream->mimetype = 'text/xml';
-  $datastream->setContentFromFile("$module_path/xml/genesequence_ds_composite_model.xml", FALSE);
+  $datastream->setContentFromFile("$module_path/xml/content_models/genesequence_ds_composite_model.xml", FALSE);
+  $genesequence_cmodel->ingestDatastream($datastream);
+  // Trigger-Datastreams Datastream.
+  $datastream = $genesequence_cmodel->constructDatastream('DS-COMPOSITE-MODEL', 'X');
+  $datastream->mimetype = 'text/xml';
+  $datastream->setContentFromFile("$module_path/xml/triggers/genesequence_triggers.xml", FALSE);
   $genesequence_cmodel->ingestDatastream($datastream);
   // Genesequence Collection
   $genesequence_collection = $connection->repository->constructObject('islandora:genesequence_collection');
@@ -20,10 +25,10 @@ function islandora_bioinformatics_genesequence_islandora_required_objects(Island
   $genesequence_collection->label = 'Genesequence Collection';
   $genesequence_collection->models = 'islandora:collectionCModel';
   $genesequence_collection->relationships->add(FEDORA_RELS_EXT_URI, 'isMemberOfCollection', 'islandora:root');
-  $datastream = $project_collection->constructDatastream('COLLECTION_POLICY', 'X');
+  $datastream = $genesequence_collection->constructDatastream('COLLECTION_POLICY', 'X');
   $datastream->mimetype = 'text/xml';
   $datastream->setContentFromFile("$module_path/xml/collection_policies/islandora_bioinformatics_genesequence_collection_policy.xml", FALSE);
-  $project_collection->ingestDatastream($datastream);
+  $genesequence_collection->ingestDatastream($datastream);
   
   return array(
     'islandora_bioinformatics_genesequence' => array(
@@ -57,5 +62,24 @@ function islandora_bioinformatics_genesequence_islandora_xml_form_builder_form_a
       //'self_transform' => "$module_path/xml/islandora_bioinformatics_genesequence_transform.xsl",
       'template' => FALSE,
     ),
+  );
+}
+
+function islandora_bioinformatics_genesequence_islandora_genesequence_cmodel_islandora_ingest_steps(array $configuration) {
+  return array(
+    'islandora_bioinformatics_genesequence_fasta_file_upload' => array(
+      'weight' => 8,
+      'type' => 'form',
+      'form_id' => 'islandora_bioinformatics_genesequence_upload_fasta_form',
+      'module' => 'islandora_bioinformatics_genesequence',
+      'file' => 'includes/islandora_bioinformatics_genesequence_upload_fasta.form.inc'
+    ),
+   /* 'islandora_bioinformatics_lcms_raw_file_upload' => array(
+      'weight' => 9,
+      'type' => 'form',
+      'form_id' => 'islandora_bioinformatics_lcms_upload_raw_form',
+      'module' => 'islandora_bioinformatics_lcms',
+      'file' => 'includes/islandora_bioinformatics_lcms_upload_raw.form.inc'
+    )*/
   );
 }
