@@ -27,7 +27,7 @@ function islandora_bioinformatics_genesequence_upload_fasta_form(array $form, ar
   return $form;
 }
 
-function islandora_bioinformatics_lcms_upload_csv_form_submit(array $form, array &$form_state) {
+function islandora_bioinformatics_genesequence_upload_fasta_form_submit(array $form, array &$form_state) {
   $object = $form_state['islandora']['objects'][0];
   if (empty($object['FASTA'])) {
     $ds = $object->constructDatastream('FASTA', 'M');
@@ -36,9 +36,9 @@ function islandora_bioinformatics_lcms_upload_csv_form_submit(array $form, array
   else {
     $ds = $object['FASTA'];
   }
-  $csv_file = file_load($form_state['values']['fasta_file']);
-  $csv_path = drupal_realpath($csv_file->uri);
-  $ds->setContentFromFile($csv_path, FALSE);
-  $ds->label = $csv_file->filename;
-  $ds->mimetype = $csv_file->filemime;
+  $fasta_file = file_load($form_state['values']['fasta_file']);
+  $fasta_path = drupal_realpath($fasta_file->uri);
+  $ds->setContentFromFile($fasta_path, FALSE);
+  $ds->label = $fasta_file->filename;
+  $ds->mimetype = $fasta_file->filemime;
 }
