@@ -14,6 +14,11 @@ function islandora_bioinformatics_genesequence_islandora_required_objects(Island
   $datastream->mimetype = 'text/xml';
   $datastream->setContentFromFile("$module_path/xml/content_models/genesequence_ds_composite_model.xml", FALSE);
   $genesequence_cmodel->ingestDatastream($datastream);
+  // Trigger-Datastreams Datastream.
+  $datastream = $genesequence_cmodel->constructDatastream('DS-COMPOSITE-MODEL', 'X');
+  $datastream->mimetype = 'text/xml';
+  $datastream->setContentFromFile("$module_path/xml/triggers/genesequence_triggers.xml", FALSE);
+  $genesequence_cmodel->ingestDatastream($datastream);
   // Genesequence Collection
   $genesequence_collection = $connection->repository->constructObject('islandora:genesequence_collection');
   $genesequence_collection->owner = 'fedoraAdmin';
