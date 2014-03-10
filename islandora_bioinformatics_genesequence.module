@@ -64,3 +64,22 @@ function islandora_bioinformatics_genesequence_islandora_xml_form_builder_form_a
     ),
   );
 }
+
+function islandora_bioinformatics_genesequence_islandora_genesequence_cmodel_islandora_ingest_steps(array $configuration) {
+  return array(
+    'islandora_bioinformatics_genesequence_fasta_file_upload' => array(
+      'weight' => 8,
+      'type' => 'form',
+      'form_id' => 'islandora_bioinformatics_genesequence_upload_fasta_form',
+      'module' => 'islandora_bioinformatics_genesequence',
+      'file' => 'includes/islandora_bioinformatics_genesequence_upload_fasta.form.inc'
+    ),
+   /* 'islandora_bioinformatics_lcms_raw_file_upload' => array(
+      'weight' => 9,
+      'type' => 'form',
+      'form_id' => 'islandora_bioinformatics_lcms_upload_raw_form',
+      'module' => 'islandora_bioinformatics_lcms',
+      'file' => 'includes/islandora_bioinformatics_lcms_upload_raw.form.inc'
+    )*/
+  );
+}
