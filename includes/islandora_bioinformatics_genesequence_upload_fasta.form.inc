@@ -9,7 +9,7 @@ function islandora_bioinformatics_genesequence_upload_fasta_form(array $form, ar
 
   //sets the max upload size
   $upload_size = min((int) ini_get('post_max_size'), (int) ini_get('upload_max_filesize'));
-  $extensions = array('csv');
+  $extensions = array('fasta', 'fas', 'fna', 'ffn', 'faa', 'frn');
   $form = array();
 
   $form['file'] = array(
