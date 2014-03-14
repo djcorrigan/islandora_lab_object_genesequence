@@ -1,9 +1,9 @@
 <?php
 
-  /*
-    @file
-    Handles uploading a FASTA file to an genesequence as part of ingest.
-  */
+/**
+ * @file
+ * Handles uploading a FASTA file to an genesequence as part of ingest.
+ */
 
 function islandora_bioinformatics_genesequence_upload_fasta_form(array $form, array &$form_state) {
 
