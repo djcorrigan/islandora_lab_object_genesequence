@@ -6,4 +6,5 @@
   <dsTypeModel ID="EML"> <form MIME="text/xml"/> </dsTypeModel>
   <dsTypeModel ID="ABI" optional="true"> <form MIME="application/abi"/> </dsTypeModel>
   <dsTypeModel ID="FASTA" optional="true"> <form MIME="application/fasta"/> </dsTypeModel>
+  <dsTypeModel ID="POLICY" optional="true"> <form MIME="text/xml" /> </dsTypeModel>
 </dsCompositeModel>
