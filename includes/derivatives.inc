@@ -39,7 +39,7 @@ function islandora_bioinformatics_genesequence_copy_fasta_datastream(AbstractObj
   $original_file = file_save($file);
   
   //testing
-  $file_copy($original_file, 'public://fasta' . $file->file_name . $file->$ext);
+  //$file_copy($original_file, 'public://fasta' . $file->file_name . $file->$ext);
   
   return array(
     'file' => $original_file,
