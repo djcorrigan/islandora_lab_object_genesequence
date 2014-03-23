@@ -18,12 +18,6 @@
  */
 function islandora_bioinformatics_genesequence_copy_fasta_datastream(AbstractObject $object) {
   
-  echo '<pre>';
-  echo 'test';
-  echo var_dump($object['FASTA']);
-  echo '</pre>';
-  
-  /*
   $mime_detect = new MimeDetect();
   if (!isset($object['FASTA'])) {
     return FALSE;
@@ -46,5 +40,5 @@ function islandora_bioinformatics_genesequence_copy_fasta_datastream(AbstractObj
     'extension' => $ext,
     'filename' => $file_name,
   );
-  */
+  
 }
