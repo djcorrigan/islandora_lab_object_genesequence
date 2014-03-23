@@ -4,21 +4,6 @@
  * @file
  * Functions deriving fasta files for objects.
  */
-
- /**
- * Creates the fasta file derivative for a fasta.
- *
- * @param AbstractObject $object
- *   An AbstractObject representing a Fedora object.
- * @param bool $force
- *   Whether derivative generation is being forced or not.
- *
- * @return array
- *   An array describing the outcome of the fasta creation.
- *
- * @see hook_islandora_derivative()
- */
-
  
 /**
  * Copies the OBJ to the file system.
@@ -31,7 +16,7 @@
  *
  *	@author Quintin Dawson
  */
-function islandora_basic_image_copy_obj_datastream(AbstractObject $object) {
+function islandora_bioinformatics_genesequence_copy_obj_datastream(AbstractObject $object) {
   $mime_detect = new MimeDetect();
   if (!isset($object['FASTA'])) {
     return FALSE;

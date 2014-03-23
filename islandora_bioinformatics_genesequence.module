@@ -88,7 +88,7 @@ function islandora_bioinformatics_genesequence_islandora_genesequence_cmodel_isl
       'module' => 'islandora_bioinformatics_lcms',
       'file' => 'includes/islandora_bioinformatics_lcms_upload_raw.form.inc'
     )*/
-	'islandora_bioinformatics_genesequence_fasta_file_copy_datastream' => array(
+	'islandora_bioinformatics_genesequence_copy_obj_datastream' => array(
       'weight' => 15,
       'type' => 'form',
       'form_id' => 'islandora_bioinformatics_genesequence_copy_obj_datastream',
