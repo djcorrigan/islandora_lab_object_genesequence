@@ -6,7 +6,7 @@
  */
  
 /**
- * Copies the OBJ to the file system.
+ * Copies the Fasta file to the file system.
  *
  * @param AbstractObject $object
  *   An AbstractObject representing an object within Fedora.
@@ -17,6 +17,12 @@
  *	@author Quintin Dawson
  */
 function islandora_bioinformatics_genesequence_copy_obj_datastream(AbstractObject $object) {
+  
+  echo '<pre>';
+  echo var_dump($object['FASTA']);
+  echo '</pre>';
+  
+  /*
   $mime_detect = new MimeDetect();
   if (!isset($object['FASTA'])) {
     return FALSE;
@@ -39,4 +45,5 @@ function islandora_bioinformatics_genesequence_copy_obj_datastream(AbstractObjec
     'extension' => $ext,
     'filename' => $file_name,
   );
+  */
 }
