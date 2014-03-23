@@ -90,8 +90,9 @@ function islandora_bioinformatics_genesequence_islandora_genesequence_cmodel_isl
     )*/
 	'islandora_bioinformatics_genesequence_copy_obj_datastream' => array(
       'weight' => 15,
-      'type' => 'form',
-      'form_id' => 'islandora_bioinformatics_genesequence_copy_obj_datastream',
+      //'type' => 'form',
+      //'form_id' => 'islandora_bioinformatics_genesequence_copy_obj_datastream',
+	  'function' => 'islandora_bioinformatics_genesequence_copy_obj_datastream',
       'module' => 'islandora_bioinformatics_genesequence',
       'file' => 'includes/derivatives.inc'
     ),
