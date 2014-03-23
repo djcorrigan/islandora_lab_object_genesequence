@@ -16,9 +16,10 @@
  *
  *	@author Quintin Dawson
  */
-function islandora_bioinformatics_genesequence_copy_obj_datastream(AbstractObject $object) {
+function islandora_bioinformatics_genesequence_copy_fasta_datastream(AbstractObject $object) {
   
   echo '<pre>';
+  echo 'test';
   echo var_dump($object['FASTA']);
   echo '</pre>';
   
