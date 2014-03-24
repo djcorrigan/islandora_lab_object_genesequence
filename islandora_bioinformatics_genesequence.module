@@ -91,6 +91,7 @@ function islandora_bioinformatics_genesequence_islandora_genesequence_cmodel_isl
   );
 }
 
+/*
 function islandora_bioinformatics_genesequence_islandora_genesequence_cmodel_islandora_derivatives() {
 	return array(
 		array(
@@ -103,3 +104,4 @@ function islandora_bioinformatics_genesequence_islandora_genesequence_cmodel_isl
 		),
 	);
 }
+*/
