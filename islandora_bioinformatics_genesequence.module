@@ -96,7 +96,7 @@ function islandora_bioinformatics_genesequence_islandora_genesequence_cmodel_isl
 		  'source_dsid' => 'FASTA',
 		  'weight' => '0',
 		  'function' => array(
-			'islandora_bioinformatics_genesequence_copy_fasta_datastream',
+			'islandora_bioinformatics_genesequence_create_fasta_file',
 		  ),
 		  'file' => drupal_get_path('module', 'islandora_bioinformatics_genesequence') . '/includes/derivatives.inc',
 		),
@@ -104,7 +104,7 @@ function islandora_bioinformatics_genesequence_islandora_genesequence_cmodel_isl
 		/*
 		array(
 		  'weight' => 15,
-		  'function' => 'islandora_bioinformatics_genesequence_copy_fasta_datastream',
+		  'function' => 'islandora_bioinformatics_genesequence_create_fasta_file',
 		  'module' => 'islandora_bioinformatics_genesequence',
 		  'file' => 'includes/derivatives.inc'
 		),

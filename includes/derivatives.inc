@@ -16,10 +16,42 @@
  *
  *	@author Quintin Dawson
  */
+ 
+ function islandora_bioinformatics_genesequence_create_fasta_file(AbstractObject $object, $force = FALSE) {
+  $return = '';
+  if (!isset($object['FASTA']) || (isset($object['FASTA']) && $force === TRUE)) {
+    $original_file = islandora_bioinformatics_genesequence_copy_fasta_datastream($object);
+    if ($original_file === FALSE) {
+      $return  = array(
+		'success' => FALSE,
+		'messages' => array(
+		  array(
+			'message' => t('Could not create file for fasta %s. No fasta file was uploaded.'),
+			'message_sub' => array('%s' => $object->id),
+			'type' => 'watchdog',
+			'severity' => WATCHDOG_ERROR,
+		  ),
+		),
+	  );
+    } else {
+		$return = array(
+			'success' => TRUE,
+			'messages' => array(
+				array(
+					'message' => t('The FASTA file was created successfully for @pid!'),
+					'message_sub' => array('@pid' => $object->id),
+					'type' => 'dsm',
+				),
+			),
+		);
+	}
+    return $return;
+  }
+}
+ 
+ 
 function islandora_bioinformatics_genesequence_copy_fasta_datastream(AbstractObject $object) {
-	echo 'Testing if the function is called';
 
-  /*
   $mime_detect = new MimeDetect();
   if (!isset($object['FASTA'])) {
     return FALSE;
@@ -48,5 +80,4 @@ function islandora_bioinformatics_genesequence_copy_fasta_datastream(AbstractObj
     'extension' => $ext,
     'filename' => $file_name,
   );
-  */
 }
