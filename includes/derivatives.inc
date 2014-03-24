@@ -17,7 +17,9 @@
  *	@author Quintin Dawson
  */
 function islandora_bioinformatics_genesequence_copy_fasta_datastream(AbstractObject $object) {
-  
+	echo 'Testing if the function is called';
+
+  /*
   $mime_detect = new MimeDetect();
   if (!isset($object['FASTA'])) {
     return FALSE;
@@ -27,7 +29,7 @@ function islandora_bioinformatics_genesequence_copy_fasta_datastream(AbstractObj
 
   // Create a file object we can save.
   //$file_uri = file_create_filename("{$file_name}FASTA.{$ext}", 'temporary://');
-  $file_uri = file_create_filename("{$file_name}FASTA.{$ext}", 'public://fasta');
+  $file_uri = file_create_filename("{$file_name}FASTA.{$ext}", 'public://fasta/');
   $file = new stdClass();
   $file->uri = $file_uri;
   $file->filename = $file_name;
@@ -39,12 +41,12 @@ function islandora_bioinformatics_genesequence_copy_fasta_datastream(AbstractObj
   $original_file = file_save($file);
   
   //testing
-  //$file_copy($original_file, 'public://fasta' . $file->file_name . $file->$ext);
+  //$file_copy($original_file, 'public://fasta/' . $file->file_name . $ext);
   
   return array(
     'file' => $original_file,
     'extension' => $ext,
     'filename' => $file_name,
   );
-  
+  */
 }
