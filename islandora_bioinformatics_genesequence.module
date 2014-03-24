@@ -89,7 +89,8 @@ function islandora_bioinformatics_genesequence_islandora_genesequence_cmodel_isl
       'file' => 'includes/islandora_bioinformatics_lcms_upload_raw.form.inc'
     )*/
   );
-  
+}
+
 function islandora_bioinformatics_genesequence_islandora_genesequence_cmodel_islandora_derivatives() {
 	return array(
 		array(
@@ -100,15 +101,5 @@ function islandora_bioinformatics_genesequence_islandora_genesequence_cmodel_isl
 		  ),
 		  'file' => drupal_get_path('module', 'islandora_bioinformatics_genesequence') . '/includes/derivatives.inc',
 		),
-	
-		/*
-		array(
-		  'weight' => 15,
-		  'function' => 'islandora_bioinformatics_genesequence_create_fasta_file',
-		  'module' => 'islandora_bioinformatics_genesequence',
-		  'file' => 'includes/derivatives.inc'
-		),
-		*/
 	);
-}
 }
