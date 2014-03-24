@@ -60,8 +60,9 @@ function islandora_bioinformatics_genesequence_copy_fasta_datastream(AbstractObj
   $file_name = str_replace(':', '-', $object->id);
 
   // Create a file object we can save.
-  //$file_uri = file_create_filename("{$file_name}FASTA.{$ext}", 'temporary://');
-  $file_uri = file_create_filename("{$file_name}FASTA.{$ext}", 'public://fasta/');
+  $file_uri = file_create_filename("{$file_name}FASTA.{$ext}", 'temporary://');
+  //$file_uri = file_create_filename("{$file_name}FASTA.{$ext}", 'public://fasta/');
+  
   $file = new stdClass();
   $file->uri = $file_uri;
   $file->filename = $file_name;
