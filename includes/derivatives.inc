@@ -23,28 +23,29 @@
     $original_file = islandora_bioinformatics_genesequence_copy_fasta_datastream($object);
     if ($original_file === FALSE) {
       $return  = array(
-		'success' => FALSE,
-		'messages' => array(
-		  array(
-			'message' => t('Could not create file for fasta %s. No fasta file was uploaded.'),
-			'message_sub' => array('%s' => $object->id),
-			'type' => 'watchdog',
-			'severity' => WATCHDOG_ERROR,
-		  ),
-		),
-	  );
-    } else {
-		$return = array(
-			'success' => TRUE,
-			'messages' => array(
-				array(
-					'message' => t('The FASTA file was created successfully for @pid!'),
-					'message_sub' => array('@pid' => $object->id),
-					'type' => 'dsm',
-				),
-			),
-		);
-	}
+    'success' => FALSE,
+    'messages' => array(
+      array(
+      'message' => t('Could not create file for fasta %s. No fasta file was uploaded.'),
+      'message_sub' => array('%s' => $object->id),
+      'type' => 'watchdog',
+      'severity' => WATCHDOG_ERROR,
+      ),
+    ),
+    );
+  } 
+  else {
+      $return = array(
+        'success' => TRUE,
+        'messages' => array(
+        array(
+          'message' => t('The FASTA file was created successfully for @pid!'),
+          'message_sub' => array('@pid' => $object->id),
+          'type' => 'dsm',
+        ),
+      ),
+    );
+  }
     return $return;
   }
 }
