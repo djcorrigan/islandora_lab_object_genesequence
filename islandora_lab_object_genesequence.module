@@ -1,5 +1,6 @@
 <?php
 /**
+  * @file 
   * Implements hook_islandora_required_objects()
   * 
   */
@@ -9,16 +10,22 @@ function islandora_lab_object_genesequence_islandora_required_objects(IslandoraT
   $genesequence_cmodel->owner = 'fedoraAdmin';
   $genesequence_cmodel->label = 'Bioinformatics Genesequence Content Model';
   $genesequence_cmodel->models = 'fedora-system:ContentModel-3.0';
+  
   // DS-COMPOSITE-MODEL Datastream.
   $datastream = $genesequence_cmodel->constructDatastream('DS-COMPOSITE-MODEL', 'X');
   $datastream->mimetype = 'text/xml';
   $datastream->setContentFromFile("$module_path/xml/content_models/genesequence_ds_composite_model.xml", FALSE);
   $genesequence_cmodel->ingestDatastream($datastream);
+  
   // Trigger-Datastreams Datastream.
   $datastream = $genesequence_cmodel->constructDatastream('DS-COMPOSITE-MODEL', 'X');
   $datastream->mimetype = 'text/xml';
   $datastream->setContentFromFile("$module_path/xml/triggers/genesequence_triggers.xml", FALSE);
   $genesequence_cmodel->ingestDatastream($datastream);
+  
+  //Create relationship with LabObject
+  $genesequence_cmodel->relationships->add(FEDORA_MODEL_URI, 'hasModel', 'islandora:lab_object_cmodel');
+  
   // Genesequence Collection
   $genesequence_collection = $connection->repository->constructObject('islandora:genesequence_collection');
   $genesequence_collection->owner = 'fedoraAdmin';
@@ -83,3 +90,18 @@ function islandora_lab_object_genesequence_islandora_genesequence_cmodel_islando
     )*/
   );
 }
+
+/*
+function islandora_bioinformatics_genesequence_islandora_genesequence_cmodel_islandora_derivatives() {
+	return array(
+		array(
+		  'source_dsid' => 'FASTA',
+		  'weight' => '0',
+		  'function' => array(
+			'islandora_bioinformatics_genesequence_create_fasta_file',
+		  ),
+		  'file' => drupal_get_path('module', 'islandora_bioinformatics_genesequence') . '/includes/derivatives.inc',
+		),
+	);
+}
+*/

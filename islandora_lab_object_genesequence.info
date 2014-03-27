@@ -1,5 +1,7 @@
 name = "Islandora Bioinformatics Fraction"
 description = "Extends the Islandora Bioinformatics Package to deal with GeneSequence data."
+dependencies[] = islandora
+dependencies[] = islandora_bioinformatics_base
 package = Islandora Bioinformatics
 dependencies[] = islandora
 dependencies[] = islandora_bioinformatics_base
