@@ -4,7 +4,7 @@
   * 
   */
 function islandora_bioinformatics_genesequence_islandora_required_objects(IslandoraTuque $connection) {
-  $module_path = drupal_get_path('module', 'islandora_bioinformatics_genesequence');
+  $module_path = drupal_get_path('module', 'islandora_lab_object_genesequence');
   $genesequence_cmodel = $connection->repository->constructObject('islandora:genesequence_cmodel');
   $genesequence_cmodel->owner = 'fedoraAdmin';
   $genesequence_cmodel->label = 'Bioinformatics Genesequence Content Model';
@@ -31,7 +31,7 @@ function islandora_bioinformatics_genesequence_islandora_required_objects(Island
   $genesequence_collection->ingestDatastream($datastream);
   
   return array(
-    'islandora_bioinformatics_genesequence' => array(
+    'islandora_lab_object_genesequence' => array(
       'title' => 'Bioinformatics Genesequence',
       'objects' => array(
           $genesequence_cmodel,
@@ -42,7 +42,7 @@ function islandora_bioinformatics_genesequence_islandora_required_objects(Island
 }
 
 function islandora_bioinformatics_genesequence_islandora_xml_form_builder_forms() {
-  $module_path = drupal_get_path('module', 'islandora_bioinformatics_genesequence');
+  $module_path = drupal_get_path('module', 'islandora_lab_object_genesequence');
   return array(
     'Genesequence Form' => array(
       'form_file' => "$module_path/xml/islandora_bioinformatics_genesequence_form.xml",
@@ -51,7 +51,7 @@ function islandora_bioinformatics_genesequence_islandora_xml_form_builder_forms(
 }
 
 function islandora_bioinformatics_genesequence_islandora_xml_form_builder_form_associations() {
-  $module_path = drupal_get_path('module', 'islandora_bioinformatics_genesequence');
+  $module_path = drupal_get_path('module', 'islandora_lab_object_genesequence');
   return array(
     'islandora_bioinformatics_genesequence_form' => array(
       'genesequence_cm' => 'islandora:genesequence',
@@ -71,15 +71,15 @@ function islandora_bioinformatics_genesequence_islandora_genesequence_cmodel_isl
       'weight' => 8,
       'type' => 'form',
       'form_id' => 'islandora_bioinformatics_genesequence_upload_fasta_form',
-      'module' => 'islandora_bioinformatics_genesequence',
+      'module' => 'islandora_lab_object_genesequence',
       'file' => 'includes/islandora_bioinformatics_genesequence_upload_fasta.form.inc'
     ),
    /* 'islandora_bioinformatics_lcms_raw_file_upload' => array(
       'weight' => 9,
       'type' => 'form',
       'form_id' => 'islandora_bioinformatics_lcms_upload_raw_form',
-      'module' => 'islandora_bioinformatics_lcms',
-      'file' => 'includes/islandora_bioinformatics_lcms_upload_raw.form.inc'
+      'module' => 'islandora_lab_object_lcms',
+      'file' => 'includes/islandora_lab_object_lcms_upload_raw.form.inc'
     )*/
   );
 }
