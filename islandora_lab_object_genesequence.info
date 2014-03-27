@@ -1,0 +1,9 @@
+name = "Islandora Bioinformatics Fraction"
+description = "Extends the Islandora Bioinformatics Package to deal with GeneSequence data."
+package = Islandora Bioinformatics
+dependencies[] = islandora
+dependencies[] = islandora_bioinformatics_base
+dependencies[] = islandora_lab_object_specimen
+version = 7.x-dev
+core = 7.x
+configure = admin/islandora/bioinformatics/genesequence
