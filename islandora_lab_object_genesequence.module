@@ -36,7 +36,13 @@ function islandora_lab_object_genesequence_islandora_required_objects(IslandoraT
   $datastream->mimetype = 'text/xml';
   $datastream->setContentFromFile("$module_path/xml/collection_policies/islandora_lab_object_genesequence_collection_policy.xml", FALSE);
   $genesequence_collection->ingestDatastream($datastream);
-  
+
+  // add the relationship between genesequences and specimens
+  $specimen_model = islandora_object_load("islandora:specimen_cmodel");
+  $specimen_model->relationships->add(FEDORA_RELS_EXT_URI, "datarel_hasPart", "islandora:genesequence_cmodel");
+  $genesequence_cmodel->relationships->add(FEDORA_RELS_EXT_URI, "datarel_isPartOf", "islandora:specimen_cmodel");
+
+
   return array(
     'islandora_lab_object_genesequence' => array(
       'title' => 'Bioinformatics Genesequence',
