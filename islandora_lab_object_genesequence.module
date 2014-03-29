@@ -41,8 +41,8 @@ function islandora_lab_object_genesequence_islandora_required_objects(IslandoraT
 
   // add the relationship between genesequences and specimens
   $specimen_model = islandora_object_load("islandora:specimen_cmodel");
-  add_hasPart($specimen_model, "islandora:genesequence_cmodel");
-  add_isPartOf($genesequence_cmodel, "islandora:specimen_cmodel");
+ // add_hasPart($specimen_model, "islandora:genesequence_cmodel");
+  //add_isPartOf($genesequence_cmodel, "islandora:specimen_cmodel");
 
   return array(
     'islandora_lab_object_genesequence' => array(
