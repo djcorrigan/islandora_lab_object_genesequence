@@ -55,6 +55,18 @@ function islandora_lab_object_genesequence_islandora_required_objects(IslandoraT
   );
 }
 
+function islandora_lab_object_genesequence_menu(){
+  return array(
+    'islandora/object/%islandora_object/test_ingest_genesequence' => array(
+        'title' => 'Ingest Gene Sequence',
+        'page callback' => 'rel_lab_object_genesequence_ingest',
+        'page arguments' => array(2),
+        'access callback' => TRUE,
+      )
+  );
+}
+
+
 function islandora_lab_object_genesequence_islandora_xml_form_builder_forms() {
   $module_path = drupal_get_path('module', 'islandora_lab_object_genesequence');
   return array(
@@ -112,3 +124,11 @@ function islandora_bioinformatics_genesequence_islandora_genesequence_cmodel_isl
 	);
 }
 */
+
+
+/**
+* @author Quintin Dawson qdawson@upei.ca
+*/
+function rel_lab_object_genesequence_ingest($object) {
+
+}
