@@ -51,6 +51,8 @@ function islandora_lab_object_genesequence_forms($form_id, $args){
 
 
 function islandora_lab_object_genesequence_islandora_required_objects(IslandoraTuque $connection) {
+  module_load_include('inc', 'islandora_bioinformatics_base', 'base_functions');
+
   $module_path = drupal_get_path('module', 'islandora_lab_object_genesequence');
   $genesequence_cmodel = $connection->repository->constructObject('islandora:genesequence_cmodel');
   $genesequence_cmodel->owner = 'fedoraAdmin';
@@ -82,7 +84,12 @@ function islandora_lab_object_genesequence_islandora_required_objects(IslandoraT
   $datastream->mimetype = 'text/xml';
   $datastream->setContentFromFile("$module_path/xml/collection_policies/islandora_lab_object_genesequence_collection_policy.xml", FALSE);
   $genesequence_collection->ingestDatastream($datastream);
-  
+
+  // add the relationship between genesequences and specimens
+  $specimen_model = islandora_object_load("islandora:specimen_cmodel");
+  add_hasPart($specimen_model, "islandora:genesequence_cmodel");
+  add_isPartOf($genesequence_cmodel, "islandora:specimen_cmodel");
+
   return array(
     'islandora_lab_object_genesequence' => array(
       'title' => 'Bioinformatics Genesequence',
@@ -93,6 +100,18 @@ function islandora_lab_object_genesequence_islandora_required_objects(IslandoraT
     ),
   );
 }
+
+function islandora_lab_object_genesequence_menu(){
+  return array(
+    'islandora/object/%islandora_object/test_ingest_genesequence' => array(
+        'title' => 'Ingest Gene Sequence',
+        'page callback' => 'rel_lab_object_genesequence_ingest',
+        'page arguments' => array(2),
+        'access callback' => TRUE,
+      )
+  );
+}
+
 
 function islandora_lab_object_genesequence_islandora_xml_form_builder_forms() {
   $module_path = drupal_get_path('module', 'islandora_lab_object_genesequence');
@@ -151,3 +170,11 @@ function islandora_bioinformatics_genesequence_islandora_genesequence_cmodel_isl
 	);
 }
 */
+
+
+/**
+* @author Quintin Dawson qdawson@upei.ca
+*/
+function rel_lab_object_genesequence_ingest($object) {
+
+}
