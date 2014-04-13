@@ -179,7 +179,7 @@ function islandora_bioinformatics_genesequence_islandora_genesequence_cmodel_isl
 
 function islandora_bioinformatics_genesequence_lab_object_genesequence_ingest(AbstractObject $parent) {
   $collection = islandora_object_load('islandora:genesequence_collection');
-  if (($configuration = rel_lab_object_load_ingest_configuration($collection)) !== FALSE) {
+  if (($configuration = islandora_bioinformatics_genesequence_lab_object_load_ingest_configuration($collection)) !== FALSE) {
     module_load_include('inc', 'islandora', 'includes/ingest.form');
     return drupal_get_form('islandora_ingest_form', $configuration);
   }
