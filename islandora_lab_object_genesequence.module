@@ -105,7 +105,7 @@ function islandora_lab_object_genesequence_menu(){
   return array(
     'islandora/object/%islandora_object/test_ingest_genesequence' => array(
         'title' => 'Ingest Gene Sequence',
-        'page callback' => 'rel_lab_object_genesequence_ingest',
+        'page callback' => 'islandora_bioinformatics_genesequence_lab_object_genesequence_ingest',
         'page arguments' => array(2),
         'access callback' => TRUE,
       )
@@ -177,7 +177,7 @@ function islandora_bioinformatics_genesequence_islandora_genesequence_cmodel_isl
  * This function should create a new gene sequence object and create a relationship between it and the $parent object
  */
 
-function rel_lab_object_genesequence_ingest(AbstractObject $parent) {
+function islandora_bioinformatics_genesequence_lab_object_genesequence_ingest(AbstractObject $parent) {
   $collection = islandora_object_load('islandora:genesequence_collection');
   if (($configuration = rel_lab_object_load_ingest_configuration($collection)) !== FALSE) {
     module_load_include('inc', 'islandora', 'includes/ingest.form');
@@ -187,7 +187,7 @@ function rel_lab_object_genesequence_ingest(AbstractObject $parent) {
 }
 
 
-function rel_lab_object_load_ingest_configuration(AbstractObject $collection) {
+function islandora_bioinformatics_genesequence_lab_object_load_ingest_configuration(AbstractObject $collection) {
   $is_collection_object = in_array('islandora:collectionCModel', $collection->models);
   $has_policy = isset($collection['COLLECTION_POLICY']);
   if (!$is_collection_object || !$has_policy) {
