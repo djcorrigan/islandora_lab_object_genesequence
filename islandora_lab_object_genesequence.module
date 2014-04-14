@@ -213,7 +213,7 @@ function islandora_lab_object_genesequence_load_ingest_configuration(AbstractObj
 
   return array(
     'collection' => $collection,
-    'models' => array_keys($policy->getContentModels()),
+    'models' => array('islandora:genesequence_cmodel'), //array_keys($policy->getContentModels()),
     'objects' => array($object),
     'parent' => $collection->id,
   );
