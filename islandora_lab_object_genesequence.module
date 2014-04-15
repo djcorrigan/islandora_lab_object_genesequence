@@ -85,8 +85,7 @@ function islandora_lab_object_genesequence_islandora_required_objects(IslandoraT
   $datastream->setContentFromFile("$module_path/xml/collection_policies/islandora_lab_object_genesequence_collection_policy.xml", FALSE);
   $genesequence_collection->ingestDatastream($datastream);
 
-  // add the relationship between genesequences and specimens
-  add_isPartOf($genesequence_cmodel, "islandora:specimen_cmodel");
+  $genesequence_cmodel->relationships->add(FEDORA_RELS_EXT_URI, 'datarel_isPartOf', 'islandora:specimen_cmodel');
 
   return array(
     'islandora_lab_object_genesequence' => array(
