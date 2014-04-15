@@ -101,7 +101,7 @@ function islandora_lab_object_genesequence_islandora_required_objects(IslandoraT
 
 function islandora_lab_object_genesequence_islandora_genesequence_cmodel_islandora_ingest_steps(array $configuration) {
   return array(
-    'islandora_lab_object_genesequence_fasta_file_upload' => array(
+    'islandora_lab_object_genesequence_upload_fasta' => array(
       'weight' => 8,
       'type' => 'form',
       'form_id' => 'islandora_lab_object_genesequence_upload_fasta_form',
