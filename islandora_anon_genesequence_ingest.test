@@ -26,8 +26,8 @@ class IslandoraGenesequenceIngestTestCase extends IslandoraWebTestCase {
 
   public static function getInfo() {
     return array(
-      'name' => 'Genesequence Ingest/Purge Test',
-      'description' => 'Ingests and deletes a genesequence',
+      'name' => 'Genesequence Anon Ingest/Purge Test',
+      'description' => 'Attempts to Ingest and delete a genesequence with a user who should not be able to.',
       'group' => 'Islandora Genesequence',
     );
   }
