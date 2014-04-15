@@ -62,7 +62,6 @@ class IslandoraAnonGenesequenceIngestTestCase extends IslandoraWebTestCase {
 
     $user = $this->drupalCreateUser(array(
       'view fedora repository objects',
-      'manage object properties',
     ));
 
     //Logs them in.
@@ -120,11 +119,13 @@ class IslandoraAnonGenesequenceIngestTestCase extends IslandoraWebTestCase {
 //**NOTE** -> At this point the ingest step is expected to fail, as Fedora should reject this user.
 
     $genesequence_test_object = NULL;
+    $did_ingest_work = true;
 
     try {
       $genesequence_test_object = $this->ingestConstructedObject($genesequence_properties, $genesequence_datastreams);
     }
     catch (RepositoryException $re) {
+      $did_ingest_work = false;
       assertTrue($re->getMessage() == 'Unauthorized');
       assertTrue($genesequence_test_object == NULL);
       echo 'Caught exception: ', $re->getMessage(), "\n";
@@ -132,12 +133,14 @@ class IslandoraAnonGenesequenceIngestTestCase extends IslandoraWebTestCase {
 
 //**
 
+    if($did_ingest_work)
+    {
+      //We can turn off the safety here because we know exactly what's being deleted,
+      //and it's only within the test framework, not the actual database.
 
-    //We can turn off the safety here because we know exactly what's being deleted,
-    //and it's only within the test framework, not the actual database.
-
-
-    //Delete the object
-    $this->deleteObject('islandora:test_genesequence', $button = NULL, $safety = FALSE);
+      //Delete the object
+      $this->deleteObject('islandora:test_genesequence', $button = NULL, $safety = FALSE);
+    }
+  
   }
 }
