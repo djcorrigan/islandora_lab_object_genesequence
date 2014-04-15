@@ -86,8 +86,6 @@ function islandora_lab_object_genesequence_islandora_required_objects(IslandoraT
   $genesequence_collection->ingestDatastream($datastream);
 
   // add the relationship between genesequences and specimens
-  $specimen_model = islandora_object_load("islandora:specimen_cmodel");
-  add_hasPart($specimen_model, "islandora:genesequence_cmodel");
   add_isPartOf($genesequence_cmodel, "islandora:specimen_cmodel");
 
   return array(
@@ -97,42 +95,6 @@ function islandora_lab_object_genesequence_islandora_required_objects(IslandoraT
           $genesequence_cmodel,
           $genesequence_collection,
       ),
-    ),
-  );
-}
-
-function islandora_lab_object_genesequence_menu(){
-  return array(
-    'islandora/object/%islandora_object/test_ingest_genesequence' => array(
-        'title' => 'Ingest Gene Sequence',
-        'page callback' => 'islandora_lab_object_genesequence_ingest',
-        'page arguments' => array(2),
-        'access callback' => TRUE,
-      )
-  );
-}
-
-
-function islandora_lab_object_genesequence_islandora_xml_form_builder_forms() {
-  $module_path = drupal_get_path('module', 'islandora_lab_object_genesequence');
-  return array(
-    'Genesequence Form' => array(
-      'form_file' => "$module_path/xml/islandora_lab_object_genesequence_form.xml",
-    ),
-  );
-}
-
-function islandora_lab_object_genesequence_islandora_xml_form_builder_form_associations() {
-  $module_path = drupal_get_path('module', 'islandora_lab_object_genesequence');
-  return array(
-    'islandora_lab_object_genesequence_form' => array(
-      'genesequence_cm' => 'islandora:genesequence',
-      'form_name' => 'Genesequence Form',
-      'dsid' => 'EML',
-      'title_field' => array('taxonomy', 'species'),
-      'transform' => '',
-      //'self_transform' => "$module_path/xml/islandora_lab_object_genesequence_transform.xsl",
-      'template' => FALSE,
     ),
   );
 }
