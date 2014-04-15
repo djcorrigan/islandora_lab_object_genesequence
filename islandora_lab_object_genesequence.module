@@ -79,7 +79,7 @@ function islandora_lab_object_genesequence_islandora_required_objects(IslandoraT
   $genesequence_collection->owner = 'fedoraAdmin';
   $genesequence_collection->label = 'Genesequence Collection';
   $genesequence_collection->models = 'islandora:collectionCModel';
-  $genesequence_collection->relationships->add(FEDORA_RELS_EXT_URI, 'isMemberOfCollection', 'islandora:lab_objects_collection');
+  $genesequence_collection->relationships->add(FEDORA_RELS_EXT_URI, 'isMemberOfCollection', 'islandora:lab_object_collection');
   $datastream = $genesequence_collection->constructDatastream('COLLECTION_POLICY', 'X');
   $datastream->mimetype = 'text/xml';
   $datastream->setContentFromFile("$module_path/xml/collection_policies/islandora_lab_object_genesequence_collection_policy.xml", FALSE);
