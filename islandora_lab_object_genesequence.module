@@ -101,13 +101,13 @@ function islandora_lab_object_genesequence_islandora_required_objects(IslandoraT
 
 function islandora_lab_object_genesequence_islandora_genesequence_cmodel_islandora_ingest_steps(array $configuration) {
   return array(
-    'islandora_lab_object_genesequence_upload_fasta' => array(
-      'weight' => 8,
+    'islandora_lab_object_genesequence_fasta_upload' => array(
+      'weight' => 10,
       'type' => 'form',
-      'form_id' => 'islandora_lab_object_genesequence_upload_fasta_form',
+      'form_id' => 'islandora_lab_object_genesequence_fasta_upload_form',
       'module' => 'islandora_lab_object_genesequence',
-      'file' => 'includes/islandora_lab_object_genesequence_upload_fasta.form.inc'
-    ),
+      'file' => 'includes/islandora_lab_object_genesequence_fasta_upload.form.inc'
+    )
    /* 'islandora_lab_object_lcms_raw_file_upload' => array(
       'weight' => 9,
       'type' => 'form',
