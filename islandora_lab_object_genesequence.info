@@ -3,6 +3,7 @@ description = "Extends the Islandora Bioinformatics Package to deal with GeneSeq
 dependencies[] = islandora
 package = Islandora Bioinformatics
 dependencies[] = islandora_lab_object_specimen
+files[] = islandora_genesequence_ingest.test
 version = 7.x-dev
 core = 7.x
 configure = admin/islandora/bioinformatics/genesequence
