@@ -16,7 +16,7 @@
 * @author Dalton Mackenzie <demackenzie@upei.ca>
 */
 
-class IslandoraGenesequenceIngestTestCase extends IslandoraWebTestCase {
+class IslandoraAnonGenesequenceIngestTestCase extends IslandoraWebTestCase {
 
   /**
   * Get test information
@@ -55,7 +55,7 @@ class IslandoraGenesequenceIngestTestCase extends IslandoraWebTestCase {
   * Creates a user and attempts to ingest a genesequence.
   */
 
-  public function testIngestGenesequence() {
+  public function testAnonIngestGenesequence() {
     
 
     //Gets the admin user
