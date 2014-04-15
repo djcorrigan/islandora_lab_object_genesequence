@@ -1,0 +1,127 @@
+<?php
+
+/**
+* @file islandora_genesequence_ingest.test
+*
+* First, attempts to ingest a genesequence object.
+*
+* Then the test will purge the object.
+*
+* The pid used for the duration of this test will be islandora:test_genesequence
+*
+*
+* @author Dalton Mackenzie <demackenzie@upei.ca>
+*/
+
+class IslandoraGenesequenceIngestTestCase extends IslandoraWebTestCase {
+
+  /**
+  * Get test information
+  *
+  * @see IslandoraWebTestCase::getInfo()
+  */
+
+  public static function getInfo() {
+    return array(
+      'name' => 'Genesequence Ingest/Purge Test',
+      'description' => 'Ingests and deletes a genesequence',
+      'group' => 'Islandora Genesequence',
+    );
+  }
+
+  /**
+  * Set up the test environment.
+  *
+  * @see IslandoraWebTestCase::setUp()
+  */
+
+  public function setUp() {
+    parent::setUp(array(
+      'islandora',
+      'islandora_lab_object_genesequence',
+      'islandora_basic_collection',
+      )
+    );
+  }
+
+  /**
+  * @function testIngestGenesequence()
+  *
+  * @author Dalton Mackenzie <demackenzie@upei.ca>
+  *
+  * Creates an administrative user and attempts to ingest a genesequence.
+  */
+
+  public function testIngestGenesequence() {
+    
+
+    //Gets the admin user
+
+    $user = $this->admin;
+
+    //Logs them in.
+
+    $this->drupalLogin($user);
+
+    //Get the path to the module to prepend it to the path to fixtures,
+    //a directory containing the datastreams required to test ingest the object.
+
+    $path = drupal_get_path('module', 'islandora_lab_object_genesequence');
+
+    $path = $path . "/"; //Add a slash because fixtures/$file will be coming after this.
+
+    //Create a genesequence properties array for the construction and ingestion of a genesequence object.
+    $genesequence_properties = array();   //init the array
+    $genesequence_properties['label'] = 'genesequence_test';   //Give it a label
+    $genesequence_properties['pid'] = 'islandora:test_genesequence';  //PID
+    $genesequence_properties['models'] = array(   //The content model used is the genesequenceect_cmodel
+        'islandora:genesequence_cmodel',
+        );
+    $genesequence_properties['parent'] = 'islandora:root'; //Just use root as the parent for now, delete it at the end of the test.
+
+    $genesequence_datastreams = array(); // init the data streams array
+
+
+    //The datastreams for the object will be taken from files in the fixtures directory
+    
+    $genesequence_datastream_dc = array(); //Init the Dublin Core datastream
+    $genesequence_datastream_dc['dsid'] = 'DC';  //dsid comes from the ds composite model in the xml directory
+    $genesequence_datastream_dc['path'] = $path . 'fixtures/example_genesequence_dc.xml'; //Path to the file containing the datastream
+    $genesequence_datastream_dc['control_group'] = 'M'; //M - managed by Fedora, X - in line XML
+    $genesequence_datastream_dc['mimetype'] = 'text/xml';
+
+    $genesequence_datastream_genesequence = array(); //Init the FASTA datastream
+    $genesequence_datastream_genesequence['dsid'] = 'FRACTION'; //dsid comes from the ds composite model in the xml directory
+    $genesequence_datastream_genesequence['path'] = $path . 'fixtures/example_genesequence_fasta.fasta'; //Path to the file containing the datastream
+    $genesequence_datastream_genesequence['control_group'] = 'M'; //M - managed by Fedora, X - in line XML
+    $genesequence_datastream_genesequence['mimetype'] = 'text/xml';
+
+    $genesequence_datastream_relsext = array(); //Init the RELS-EXT datastream
+    $genesequence_datastream_relsext['dsid'] = 'RELS-EXT'; //dsid comes from the ds composite model in the xml directory
+    $genesequence_datastream_relsext['path'] = $path . 'fixtures/example_genesequence_relsext.rdf'; //Path to the file containing the datastream
+    $genesequence_datastream_relsext['control_group'] = 'M'; //M - managed by Fedora, X - in line XML
+    $genesequence_datastream_relsext['mimetype'] = 'text/xml';
+
+    //Add all of the datastreams to the datastreams array
+
+    $genesequence_datastreams[] = $genesequence_datastream_dc;
+    $genesequence_datastreams[] = $genesequence_datastream_genesequence;
+    $genesequence_datastreams[] = $genesequence_datastream_relsext;
+
+    //Ingest the object with its properties array and datastreams array.
+
+    try {
+      $genesequence_test_object = $this->ingestConstructedObject($genesequence_properties, $genesequence_datastreams);
+    }
+    catch (RepositoryException $re) {
+      echo 'Caught exception: ', $re->getMessage(), "\n";
+    }
+
+    //We can turn off the safety here because we know exactly what's being deleted,
+    //and it's only within the test framework, not the actual database.
+
+
+    //Delete the object
+    $this->deleteObject('islandora:test_genesequence', $button = NULL, $safety = FALSE);
+  }
+}
