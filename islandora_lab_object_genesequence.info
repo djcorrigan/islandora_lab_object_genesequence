@@ -1,4 +1,4 @@
-name = "Islandora Bioinformatics Gene Sequence"
+name = "Islandora Lab Object Gene Sequence"
 description = "Extends the Islandora Bioinformatics Package to deal with GeneSequence data."
 dependencies[] = islandora
 package = Islandora Bioinformatics
