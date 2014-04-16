@@ -47,7 +47,14 @@ function islandora_lab_object_genesequence_forms($form_id, $args){
   return $forms;
 }
 
-
+function islandora_lab_object_genesequence_islandora_xml_form_builder_forms() {
+  $module_path = drupal_get_path('module', 'islandora_lab_object_genesequence');
+  return array(
+    'Gene Sequence Form' => array(
+      'form_file' => "$module_path/xml/forms/islandora_lab_object_genesequence_form_mods.xml",
+    ),
+  );
+}
 
 
 function islandora_lab_object_genesequence_islandora_required_objects(IslandoraTuque $connection) {
