@@ -64,7 +64,7 @@ function islandora_lab_object_genesequence_islandora_xml_form_builder_form_assoc
   return array(
     'islandora_lab_object_genesequence_form_mods' => array(
       'content_model' => 'islandora:genesequence_cmodel',
-      'form_name' => 'Gene Sequence',
+      'form_name' => 'Gene Sequence Form',
       'dsid' => 'MODS',
       'title_field' => array('titleInfo', 'title'),
       'transform' => '',
