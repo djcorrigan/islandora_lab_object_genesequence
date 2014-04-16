@@ -56,6 +56,23 @@ function islandora_lab_object_genesequence_islandora_xml_form_builder_forms() {
   );
 }
 
+/**
+ * Implements hook_islandora_xml_form_builder_form_associations()
+ * @return array
+ */
+function islandora_lab_object_genesequence_islandora_xml_form_builder_form_associations() {
+  return array(
+    'islandora_lab_object_genesequence_form_mods' => array(
+      'content_model' => 'islandora:genesequence_cmodel',
+      'form_name' => 'Gene Sequence',
+      'dsid' => 'MODS',
+      'title_field' => array('titleInfo', 'title'),
+      'transform' => '',
+      'template' => FALSE,
+    ),
+  );
+}
+
 
 function islandora_lab_object_genesequence_islandora_required_objects(IslandoraTuque $connection) {
   module_load_include('inc', 'islandora_bioinformatics_base', 'base_functions');
